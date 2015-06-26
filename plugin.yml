@@ -1,0 +1,15 @@
+name: Economy
+main: me.joriseend.economy.Currency
+version: 0.1
+description: Economy plugin implementing currency
+
+author: joriseend
+
+commands:
+    economy:
+      description: Main economy plugin command
+      usage: /<command> <action> <player> <value>
+permissions:
+    economy.manage:
+        description: Allows managing
+        default: op
