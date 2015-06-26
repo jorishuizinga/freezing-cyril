@@ -14,7 +14,7 @@ public class Currency extends JavaPlugin {
 	String DisableSuccess = EconomyConsolePrefix + "Economy system has been disabled!";
 	String FewArgs = "Please specify an action!";
 	String FewArgsPlayer = "Please specify a player!";
-	String FewArgsAmount = "Please specify a amount";
+	String FewArgsAmount = "Please specify how much";
 	String IncorrectBalance = EconomyPrefix + ChatColor.RED + "Your account has insufficient funds.";
 	String YouGotMoney = EconomyPrefix + ChatColor.GREEN + "You recieved" + " ";
 	String YouLostMoney = EconomyPrefix + ChatColor.GRAY + "You sent" + " ";
@@ -29,8 +29,8 @@ public class Currency extends JavaPlugin {
 	String EconomyManagePermission = "economy.manage";
 	public void onEnable(){
 		getConfig().options().copyDefaults(true);
+		saveConfig();
 		System.out.println(EnableSuccess);
-		System.out.println("***" + "THIS BUILD IS EXTREMELY UNSTABLE! DON'T USE THIS VERSION WITHOUT BACKUPS!" + "***");
 	}
 	public void onDisable(){
 		System.out.println(DisableSuccess);
@@ -60,7 +60,22 @@ public class Currency extends JavaPlugin {
 						player.sendMessage(IncorrectBalance);
 						return true;
 					}
+				}else if(args.length > 2){
+					player.sendMessage(TooManyArgs);
+					return true;
+				}else{
+					player.sendMessage(error);
+					return true;
 				}
+			}else{
+				//TODO Execute when sender is console
+			}
+		}else if(command.getName().equalsIgnoreCase("balance")){
+			if(sender instanceof Player){
+				Player player = (Player) sender;
+				int balance = getConfig().getInt(player.getUniqueId().toString() + ConfigBalance);
+				player.sendMessage(EconomyPrefix + ChatColor.GOLD + balance);
+				return true;
 			}else{
 				//TODO Execute when sender is console
 			}

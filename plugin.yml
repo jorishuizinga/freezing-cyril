@@ -6,9 +6,12 @@ description: Economy plugin implementing currency
 author: joriseend
 
 commands:
-    economy:
-      description: Main economy plugin command
-      usage: /<command> <action> <player> <value>
+    pay:
+      description: Give someone some of your money
+      usage: /<command> <player> <value>
+    balance:
+      description: See your current balance
+      usage: /<command>
 permissions:
     economy.manage:
         description: Allows managing
