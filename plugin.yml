@@ -12,7 +12,10 @@ commands:
     balance:
       description: See your current balance
       usage: /<command>
+    addbalance:
+      description: Add money to a player's balance
+      usage: /<command> <player> <value>
 permissions:
     economy.manage.addbalance:
-        description: Allows adding to a player's balance
+        description: Allows adding money to a player's balance
         default: op
