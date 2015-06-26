@@ -18,6 +18,7 @@ public class Currency extends JavaPlugin {
 	String IncorrectBalance = EconomyPrefix + ChatColor.RED + "Your account has insufficient funds.";
 	String YouGotMoney = EconomyPrefix + ChatColor.GREEN + "You recieved" + " ";
 	String YouLostMoney = EconomyPrefix + ChatColor.GRAY + "You sent" + " ";
+	String MoneyAddSuccess = EconomyPrefix + "Successfully added" + " ";
 	String OnlinePlayerFindPrefix = ChatColor.DARK_GRAY + "Online Player Search>" + ChatColor.RESET + " ";
 	String OnlinePlayerFindConsolePrefix = "[Online Player Search]" + " ";
 	String CannotFindPlayer = ChatColor.RED + "Cannot find player" + ChatColor.RESET;
@@ -78,6 +79,18 @@ public class Currency extends JavaPlugin {
 				return true;
 			}else{
 				//TODO Execute when sender is console
+			}
+		}else if(command.getName().equalsIgnoreCase("addbalance")){
+			if(sender instanceof Player){
+				Player player = (Player) sender;
+				if(player.hasPermission("economy.manage.addbalance")){
+					Player target = Bukkit.getPlayer(args[0]);
+					int amount = Integer.parseInt(args[1]);
+					getConfig().set(target.getUniqueId().toString() + ConfigBalance, getConfig().getInt(target.getUniqueId().toString() + ConfigBalance) + amount);
+					target.sendMessage(YouGotMoney + ChatColor.GOLD + amount);
+					player.sendMessage(MoneyAddSuccess + ChatColor.GOLD + amount + ChatColor.RESET + " " + "to" + " " + ChatColor.GOLD + target.getDisplayName() + ChatColor.RESET + "'s" + " " + "balance");
+					return true;
+				}
 			}
 		}
 		return false;

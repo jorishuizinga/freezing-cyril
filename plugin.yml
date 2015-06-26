@@ -13,6 +13,6 @@ commands:
       description: See your current balance
       usage: /<command>
 permissions:
-    economy.manage:
-        description: Allows managing
+    economy.manage.addbalance:
+        description: Allows adding to a player's balance
         default: op
