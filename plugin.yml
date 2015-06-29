@@ -1,0 +1,18 @@
+name: Economy
+main: me.joriseend.economy.Currency
+version: 0.1
+description: Economy plugin implementing currency
+
+author: joriseend
+
+commands:
+    pay:
+      description: Give someone some of your money
+      usage: /<command> <player> <value>
+    balance:
+      description: See your current balance
+      usage: /<command>
+permissions:
+    economy.manage.addbalance:
+        description: Allows adding to a player's balance
+        default: op
