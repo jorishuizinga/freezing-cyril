@@ -131,6 +131,12 @@ public class Currency extends JavaPlugin {
 							getConfig().set(target.getUniqueId().toString() + ConfigBalance, getConfig().getInt(target.getUniqueId().toString() + ConfigBalance) - amount);
 							target.sendMessage(EconomyPrefix + ChatColor.GOLD + amount + YouLostMoney);
 						}
+					}else if(args.length > 2){
+						player.sendMessage(TooManyArgs);
+						return true;
+					}else{
+						player.sendMessage(EconomyPrefix + error);
+						return true;
 					}
 				}
 			}
