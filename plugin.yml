@@ -1,0 +1,47 @@
+name: Economy
+main: me.joriseend.economy.Currency
+version: 1.0.0
+description: Economy plugin implementing currency
+
+author: joriseend
+
+commands:
+    pay:
+      description: Give someone some of your money
+      usage: /<command> <player> <value>
+    balance:
+      description: See your current balance
+      usage: /<command>
+    addbalance:
+      description: Add money to a player's balance
+      usage: /<command> <player> <value>
+    rembalance:
+      description: Deduct money from a player's balance
+      usage: /<command> <player> <value>
+    setbalance:
+      description: Set the balance of a player to the specified value
+      usage: /<command> <player> <value>
+permissions:
+    economy.*:
+        description: Gives permissions to all economy commands
+        default: op
+        children:
+            economy.manage.addbalance: true
+            economy.manage.rembalance: true
+            economy.manage.setbalance: true
+    economy.manage.*:
+        description: Gives permissions to all economy managing commands
+        default: op
+        children:
+            economy.manage.addbalance: true
+            economy.manage.rembalance: true
+            economy.manage.setbalance: true
+    economy.manage.addbalance:
+        description: Allows adding money to a player's balance
+        default: op
+    economy.manage.rembalance:
+        description: Allows removing money from a player's balance
+        default: op
+    economy.manage.setbalance:
+        description: Allows setting the balance of a player to a specified value
+        default: op
