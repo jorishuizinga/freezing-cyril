@@ -1,4 +1,4 @@
-name: Economy
+name: FreezingCyril
 main: me.joriseend.economy.Currency
 version: 1.0.0
 description: Economy plugin implementing currency
